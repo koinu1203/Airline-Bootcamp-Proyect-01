@@ -1,6 +1,9 @@
 from datetime import datetime
 from model.Flight import Flight
 
+from ..config import CURRENT_DATE_FORMAT
+
+
 from typing import List
 
 class Timeline :
@@ -14,7 +17,7 @@ class Timeline :
         """
         returns the current formatted date
         """
-        months:tuple(str) = ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+        months:tuple(str) = CURRENT_DATE_FORMAT
         day:int = date.day
         month:str = months[date.month - 1]
         year:int = date.year

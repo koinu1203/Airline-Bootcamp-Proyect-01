@@ -17,3 +17,8 @@ DEPARTURE_HOUR: tuple(str) = [
     "17:15 PM",
     "17:50 PM"
 ]
+
+CURRENT_DATE_FORMAT: tuple() = [
+    ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+     "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+]
