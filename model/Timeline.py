@@ -1,16 +1,16 @@
 from datetime import datetime
 from model.Flight import Flight
 
-from ..config.config import CURRENT_DATE_FORMAT
+from config.config import CURRENT_DATE_FORMAT
 
 
 from typing import List
 
 class Timeline :
     
-    def __init__(self, flights:List(Flight), timeline_day:datetime):
+    def __init__(self, flights:List[Flight], timeline_day:datetime):
         
-        self.flights:List(Flight) = flights
+        self.flights:list(Flight) = flights
         self.timeline_day:datetime = timeline_day
     
     def __repr__(self) -> str:
