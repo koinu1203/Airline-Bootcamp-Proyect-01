@@ -1,5 +1,4 @@
 
-
 class Airplane:
     def __init__(self,code:str,economy_seats:int,premiun_seats:int):
         self.code = code
