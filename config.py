@@ -1,4 +1,4 @@
-IGV_PERCENT:int = 18
+IGV_PERCENT: int = 18
 
 CITY_TO_CODE = {
     "Lima": "LIM",
@@ -7,3 +7,13 @@ CITY_TO_CODE = {
     "Arequipa": "ARE",
     "Tarapoto": "TAR",
 }
+
+DEPARTURE_HOUR: tuple(str) = [
+    "06:30 AM",
+    "07:25 AM",
+    "08:10 AM",
+    "15:45 PM",
+    "16:25 PM",
+    "17:15 PM",
+    "17:50 PM"
+]
