@@ -1,4 +1,6 @@
-from ..config import DEPARTURE_HOUR
+# import sys,os
+# sys.path.append(os.path.join(os.path.dirname(__file__))+'..')
+
 from model.Route import Route
 from model.Passage import Passage
 from model.Airplane import Airplane
