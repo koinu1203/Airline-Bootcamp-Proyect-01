@@ -12,6 +12,13 @@ class Timeline :
         
         self.flights:List(Flight) = flights
         self.timeline_day:datetime = timeline_day
+    
+    def __repr__(self) -> str:
+        """
+    	Special method to represent the object of a class as a string
+    	"""
+        
+        return str(self.timeline_day)
 
     def current_date_format(date) -> str:
         """

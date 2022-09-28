@@ -13,3 +13,10 @@ class Flight(object):
         self.passages: List(Passage) = passages
         self.airplane: Airplane = airplane
         self.departure_hour: str = departure_hour
+
+    def __repr__(self) -> str:
+        """
+    	Special method to represent the object of a class as a string
+    	"""
+        
+        return self.departure_hour
