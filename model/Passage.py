@@ -7,5 +7,3 @@ class Passage(object):
 		self.passenger_name: str = passenger_name
 		self.tax: float = tax 
 		self.gross_price: float = gross_price
-
-		pass
