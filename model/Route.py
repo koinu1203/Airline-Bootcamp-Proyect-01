@@ -1,4 +1,5 @@
-from ..config import IGV_PERCENT,CITY_TO_CODE
+
+from config.config import IGV_PERCENT,CITY_TO_CODE
 
 class Route(object):
     def __init__(

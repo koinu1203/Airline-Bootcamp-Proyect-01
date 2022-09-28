@@ -1,7 +1,7 @@
 from datetime import datetime
 from model.Flight import Flight
 
-from ..config import CURRENT_DATE_FORMAT
+from ..config.config import CURRENT_DATE_FORMAT
 
 
 from typing import List
