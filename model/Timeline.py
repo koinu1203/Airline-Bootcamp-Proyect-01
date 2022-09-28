@@ -2,19 +2,6 @@ from datetime import datetime
 from model.Flight import Flight
 
 from config.config import CURRENT_DATE_FORMAT
-<<<<<<< HEAD
-
-
-from typing import List
-
-class Timeline :
-    
-    def __init__(self, flights:List[Flight], timeline_day:datetime):
-        
-        self.flights:list(Flight) = flights
-        self.timeline_day:datetime = timeline_day
-    
-=======
 from typing import List
 
 
@@ -25,7 +12,6 @@ class Timeline(object):
         self.flights: List[Flight] = flights
         self.timeline_day: datetime = timeline_day
 
->>>>>>> main
     def __repr__(self) -> str:
         """
         Special method to represent the object of a class as a string
