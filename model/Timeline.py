@@ -17,9 +17,9 @@ class Timeline :
         """
         returns the current formatted date
         """
-        months:tuple(str) = CURRENT_DATE_FORMAT
+        
         day:int = date.day
-        month:str = months[date.month - 1]
+        month:str = CURRENT_DATE_FORMAT[date.month - 1]
         year:int = date.year
         messsage:str = "{} de {} del {}".format(day, month, year)
 
