@@ -10,6 +10,8 @@ def question10() -> None:
 
     local.get_greatest_numbers_passengers()
 
+def question_nine() -> str:
+    local.get_the_first_three_flights_with_the_highest_sales()
 
 def question_one() -> int:
     # What is the total number of passages sold among all the flights?
