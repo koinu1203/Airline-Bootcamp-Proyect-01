@@ -25,6 +25,7 @@ CURRENT_DATE_FORMAT: Tuple[str] = ("Enero", "Febrero", "Marzo", "Abril", "Mayo",
                                    "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
 
 MAX_SEATS_CAPACITY = 168
+ECONOMIC_SEATS = 144
 PREMIUM_SEATS = 24
 
 SCHEDULED_ROUTES: Tuple[str] = (

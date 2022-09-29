@@ -13,7 +13,7 @@ class Passage(object):
         """
 		Special method to represent the object of a class as a string
 		"""
-        return self.passage_id
+        return str(self.passage_id)
 
     def get_net_price(self) -> float:
         """

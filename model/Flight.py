@@ -1,6 +1,7 @@
-from model.Route import Route
-from model.Passage import Passage
-from model.Airplane import Airplane
+
+from Route import Route
+from Passage import Passage
+from Airplane import Airplane
 
 from typing import List
 
