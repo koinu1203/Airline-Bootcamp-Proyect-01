@@ -9,6 +9,7 @@ def main():
     controller.question_four()
     controller.question_five()
     controller.question_six()
+    controller.question_nine()
     controller.question10()
 
 
