@@ -34,13 +34,13 @@ def generate_passage(route_code:str,id_count:int) -> list[Passage]:
     # generate economict seats 
     for i in range(economic_seats_occupied):
         # TODO: generar de manera ramdon los nombres de los pajeros
-        passages.append(Passage(id_count,'LoreIpsum',economic_seat_tax,economic_seat_price))
+        passages.append(Passage(id_count,'LoreIpsum',economic_seat_tax,economic_seat_price,False))
         id_count +=1
     
     # generate premiun seats
     for i in range(premiun_seats_occupied):
         # TODO: generar de manera ramdon los nombres de los pajeros
-        passages.append(Passage(id_count,'LoreIpsum',premiun_seat_tax,premiun_seat_price))
+        passages.append(Passage(id_count,'LoreIpsum',premiun_seat_tax,premiun_seat_price,True))
         id_count +=1
 
     return passages
