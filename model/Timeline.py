@@ -19,14 +19,14 @@ class Timeline(object):
 
         return str(self.timeline_day)
 
-    def current_date_format(date) -> str:
+    def current_date_format(self) -> str:
         """
         returns the current formatted date
         """
 
-        day: int = date.day
-        month: str = CURRENT_DATE_FORMAT[date.month - 1]
-        year: int = date.year
+        day: int = self.timeline_day.day
+        month: str = CURRENT_DATE_FORMAT[self.timeline_day.month - 1]
+        year: int = self.timeline_day.year
         messsage: str = "{} de {} del {}".format(day, month, year)
 
         return messsage

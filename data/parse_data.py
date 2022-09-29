@@ -4,8 +4,8 @@ from model.Airplane import Airplane
 from model.Flight import Flight
 from model.Passage import Passage
 from model.Timeline import Timeline
-from datetime import date
-from local_data import *
+from datetime import date, datetime
+from data.data import AIRLINE_ESTIMATE_RANGE_PASSAGES,AIRLINE_PRICES,AIRLINE_ROUTES,AIRLINE_SCHEDULED_FLIGHTS
 from config.config import *
 import random
 
@@ -17,8 +17,8 @@ def generate_passage(route_code:str,id_count:int) -> list[Passage]:
     # calculate random number for number of passages
     range_economic: Dict[str,float]= AIRLINE_ESTIMATE_RANGE_PASSAGES[route_code]['economic']
     range_premiun: Dict[str,float] = AIRLINE_ESTIMATE_RANGE_PASSAGES[route_code]['premium']
-    economic_seats_occupied:int = random.randrange(range_economic['MIN'],range_economic['MAX'])
-    premiun_seats_occupied:int = random.randrange(range_premiun['MIN'],range_premiun['MAX'])
+    economic_seats_occupied:int = int(random.randrange(int(range_economic['MIN']),int(range_economic['MAX'])))
+    premiun_seats_occupied:int = int(random.randrange(int(range_premiun['MIN']),int(range_premiun['MAX'])))
 
     # calculate economic and premiun price
     prices = AIRLINE_PRICES[route_code]
@@ -48,13 +48,13 @@ def generate_passage(route_code:str,id_count:int) -> list[Passage]:
 
 def parse_routes()-> Dict[str,Route]:
     """
-    
+
     """
     routes: Dict[str,Route]={}
     for k in AIRLINE_ROUTES:
         value = AIRLINE_ROUTES[k]
-        value = value.split(' - ')
-        routes[k] = Route( value[0], value[1],
+        splitValue = value.split(' - ')
+        routes[k] = Route( splitValue[0], splitValue[1],
             AIRLINE_PRICES[k]['base_price'],
             AIRLINE_PRICES[k]['economic_seat'],
             AIRLINE_PRICES[k]['premium_seat']
@@ -80,8 +80,8 @@ def generate_flights() -> list[Flight]:
 
 def generate_local_data() -> Timeline:
     flights = generate_flights()
-    current_day = date.today()
-    timeline = Timeline(flights,current_day)
+    current_day:date = date.today()
+    timeline:Timeline = Timeline(flights,current_day)
     return timeline
 
 
