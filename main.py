@@ -1,14 +1,9 @@
-from data.parse_data import LOCAL_DATA
-from model.Airplane import Airplane
-from model.Route import Route
-from model.Passage import Passage
-from model.Flight import Flight
-from model.Timeline import Timeline
+import controller
 
 
 def main():
-    local=LOCAL_DATA
-    pass
+       
+    controller.question10()
 
 if __name__ == "__main__":
     main()
