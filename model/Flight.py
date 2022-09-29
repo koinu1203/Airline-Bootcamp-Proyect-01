@@ -20,7 +20,7 @@ class Flight(object):
         """
 
         return self.departure_hour
-    
+
     def get_number_passages(self) -> int:
         """
         get the total number of passage sold by this flight
@@ -28,44 +28,57 @@ class Flight(object):
 
         return len(self.passages)
 
-    def get_economic_passages_list(self)->list[Passage]:
+    def get_economic_passages_list(self) -> list[Passage]:
         """
         return a list with all the economic passages sale
         """
 
-        economic_passages:list[Passage] = []
+        economic_passages: list[Passage] = []
         for passage in self.passages:
             if not passage.isPremium:
                 economic_passages.append(passage)
+
         return economic_passages
-    
-    def get_premium_passages_list(self)->list[Passage]:
+
+    def get_premium_passages_list(self) -> list[Passage]:
         """
         return a list with all the premium passages sale
         """
 
-        premium_passages:list[Passage] = []
+        premium_passages: list[Passage] = []
         for passage in self.passages:
             if passage.isPremium:
                 premium_passages.append(passage)
+
         return premium_passages
-    
-    def get_total_income_by_economic_passages(self)->float :
+
+    def get_total_income_by_economic_passages(self) -> float:
         """
         returns the total income by the economic passages sales in the flight
         """
-        total_income_economic_passages=0
+        total_income_economic_passages: float = 0.0
         for passage in self.passages:
             if not passage.isPremium:
-                total_income_economic_passages+=passage.get_net_price()
+                total_income_economic_passages += passage.get_net_price()
+
         return total_income_economic_passages
-    
-    def get_total_income_by_premium_passages(self)->float :
+
+    def get_total_income_by_premium_passages(self) -> float:
         """
         returns the total income by the premium passages sales in the flight
         """
-        total_income_premium_passages=0
+        total_income_premium_passages: float = 0.0
         for passage in self.passages:
             if passage.isPremium:
-                total_income_premium_passages+=passage.get_net_price()
+                total_income_premium_passages += passage.get_net_price()
+
         return total_income_premium_passages
+
+    def get_total_IGV_charge(self) -> float:
+        """
+        return the total of IGV charge 
+        """
+
+        total_IGV_Charge = sum(v.tax for v in self.passages)
+
+        return total_IGV_Charge
