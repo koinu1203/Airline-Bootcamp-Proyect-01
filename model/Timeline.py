@@ -169,10 +169,10 @@ class Timeline(object):
             if len(tres_primeros) == 3:
                 break
             if len(tres_primeros) == 0:
-                tres_primeros.append(venta_por_vuelo[0] if venta_por_vuelo[0] > venta_por_vuelo[1] else venta_por_vuelo[1])
+                tres_primeros.append(
+                    venta_por_vuelo[0] if venta_por_vuelo[0] > venta_por_vuelo[1] else venta_por_vuelo[1])
             else:
                 tres_primeros = sorted(tres_primeros, reverse=False)
                 if i > tres_primeros[0]:
                     tres_primeros.append(i)
         print(tres_primeros)
-
