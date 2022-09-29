@@ -30,3 +30,32 @@ class Timeline(object):
         messsage: str = "{} de {} del {}".format(day, month, year)
 
         return messsage
+
+    def get_number_of_passages_sale(self)->int:
+        """
+        returns the total of passages sold in all the flights in the day
+        """
+
+        total_passages = sum(v.get_number_passages() for v in self.flights)
+
+        return total_passages
+    
+    def get_total_income_economic_passages(self)->float:
+        """
+        retunrs the total income from economic passages sales 
+        """
+
+        total_income:float = sum(v.get_total_income_by_economic_passages() for v in  self.flights)
+
+        return total_income
+    
+    def get_total_income_premium_passages(self)->float:
+        """
+        retunrs the total income from premium passages sales 
+        """
+        
+        total_income:float = sum(v.get_total_income_by_premium_passages() for v in  self.flights)
+
+        return total_income
+    
+
