@@ -14,7 +14,7 @@ AIRLINE_ROUTES: Dict[str,str]={
     "TAR - LIM" : 'Tarapoto - Lima',
 }
 
-AIRLINE_PRICES: Dict[str,Dict[str,str]]={
+AIRLINE_PRICES: Dict[str,Dict[str,float]]={
     "LIM - AYA" : {'base_price': 55.19, 'economic_seat': 8.00, 'premium_seat':16.00},
     "LIM - CUS" : {'base_price': 136.51, 'economic_seat': 8.00, 'premium_seat':16.00},
     "LIM - ARE" : {'base_price': 90.59, 'economic_seat': 8.00, 'premium_seat':16.00},
@@ -36,7 +36,7 @@ AIRLINE_SCHEDULED_FLIGHTS: Dict[str,Dict[str,str]]={
     "TAR - LIM" : {'airplane':'A004', 'departure_hour': '17:50 AM'},
 }
 
-AIRLINE_ESTIMATE_RANGE_PASSAGES: Dict[str,Dict[str,Dict[str,str]]]={
+AIRLINE_ESTIMATE_RANGE_PASSAGES: Dict[str,Dict[str,Dict[str,float]]]={
     "LIM - AYA" : {'economic': {'MIN': 120, 'MAX':130}, 'premium':{'MIN': 10, 'MAX':20}},
     "LIM - CUS" : {'economic': {'MIN': 130, 'MAX':144}, 'premium':{'MIN': 15, 'MAX':24}},
     "LIM - ARE" : {'economic': {'MIN': 115, 'MAX':138}, 'premium':{'MIN': 16, 'MAX':22}},

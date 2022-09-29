@@ -8,7 +8,6 @@ from model.Timeline import Timeline
 
 def main():
     local=LOCAL_DATA
-
     pass
 
 if __name__ == "__main__":

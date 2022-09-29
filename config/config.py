@@ -11,30 +11,22 @@ CITY_TO_CODE : Dict[str,str] = {
     "Tarapoto": "TAR"
 }
 
-DEPARTURE_HOUR: Tuple[str] = (
-    "06:30 AM",
-    "07:25 AM",
-    "08:10 AM",
-    "15:45 PM",
-    "16:25 PM",
-    "17:15 PM",
-    "17:50 PM"
-)
-
-CURRENT_DATE_FORMAT: Tuple[str] = ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
-                                   "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+CURRENT_DATE_FORMAT: Dict[int,str] = {
+    0: "Enero", 
+    1: "Febrero", 
+    2: "Marzo", 
+    3: "Abril", 
+    4: "Mayo", 
+    5: "Junio", 
+    6: "Julio",
+    7: "Agosto", 
+    8: "Septiembre", 
+    9: "Octubre", 
+    10:"Noviembre", 
+    11:"Diciembre"
+}
 
 MAX_SEATS_CAPACITY = 168
 ECONOMIC_SEATS = 144
 PREMIUM_SEATS = 24
 
-SCHEDULED_ROUTES: Tuple[str] = (
-    "LIM - AYA",
-    "LIM - CUS",
-    "LIM - ARE",
-    "LIM - TAR",
-    "AYA - LIM",
-    "CUS - LIM",
-    "ARE - LIM",
-    "TAR - LIM",
-) 
