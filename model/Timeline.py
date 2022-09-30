@@ -1,4 +1,5 @@
 from datetime import date
+from decimal import Rounded
 from model.Flight import Flight
 
 from config.config import CURRENT_DATE_FORMAT
@@ -110,7 +111,46 @@ class Timeline(object):
 
         return total_income
 
+    def get_flights_by_airplane_code(self,airplane_code:str)-> List[Flight]:
+        """
+        returns the flights on which the aircraft has been scheduled
+        """
+
+        flights_list = list[Flight]=[]
+        for flight in self.flights:
+            if flight.airplane.code.lower() == airplane_code.lower():
+                flights_list.append(flight)
+        return flights_list
+
+    def get_list_of_airplanes_codes(self)->List[str]:
+        """
+        returns all the airplanes codes in flights
+        """
+        airplane_codes_list:List[str] = []
+        for v in self.flights:
+            if v.airplane.code not in airplane_codes_list:
+                airplane_codes_list.append(v.airplane.code)
+        
+        return airplane_codes_list
+
     # This method print the flight with greatest number passengers
+
+    def get_airplane_with_highest_numbers_passengers_on_all_flights(self) -> None:
+        """
+        returns the airplane with the highest number of passengers on all its flights
+        """
+        airplanes_codes = self.get_list_of_airplanes_codes()
+        highest_num_passager = sum(v.get_number_passages() for v in self.get_flights_by_airplane_code(airplanes_codes[0]))
+        airplane_selected = airplanes_codes[0]
+        del airplanes_codes[0]
+        for a in airplanes_codes:
+            sum_num_passagers = sum(v.get_number_passages() for v in self.get_flights_by_airplane_code(a))
+            if highest_num_passager> sum_num_passagers:
+                highest_num_passager = sum_num_passagers
+                airplane_selected = a
+        
+        print(
+            f"The plane with the most passengers is: {airplane_selected} with {highest_num_passager} passengers carried.")
 
     def get_greatest_numbers_passengers(self) -> None:
         # Airplane code with greatest number passengers
@@ -120,59 +160,33 @@ class Timeline(object):
 
         # Iterate all the flights of the day
         for i in self.flights:
-            # print(len(i.passages))
             # Compare and get greatest number passengers
             if (greater_number_passengers < len(i.passages)):
                 airplane_code = i.airplane.code
                 greater_number_passengers = len(i.passages)
 
         print(
-            f"El avión con más pasajeros es: {airplane_code}. Con un total de {greater_number_passengers}.")
-    # This method print the flight with greatest number passengers
+            f"10.- The plane with the most passengers is: {airplane_code}. With a total of {greater_number_passengers} passagers.")
 
-    def get_greatest_numbers_passengers(self) -> None:
-        # Airplane code with greatest number passengers
-        airplane_code: str = ''
-        # Greatest numbers of passengers among the flights
-        greater_number_passengers: int = 0
+    def get_the_firsts_flights_with_the_highest_sales(self, num: int) -> str:
 
-        # Iterate all the flights of the day
-        for i in self.flights:
-            # print(len(i.passages))
-            # Compare and get greatest number passengers
-            if (greater_number_passengers < len(i.passages)):
-                airplane_code = i.airplane.code
-                greater_number_passengers = len(i.passages)
+        flight_list: list[Dict[str:float]] = [{'route': f.get_route_code(), 'profits': round(
+            f.get_total_income_by_all_passages(), 2)} for f in self.flights]
+        
+        firsts_flights_list: list[str] = []
+        more_than = 0
+        if len(flight_list) < num:
+            raise Exception(f"The param num cannot be more than the scheduled flights. ")
+        while len(firsts_flights_list) < num:
+            index = 0 if flight_list[0]['profits'] > flight_list[1]['profits'] else 1
+            more_than = flight_list[index]['profits']
+            firsts_flights_list.append(
+                flight_list[index])
+            del flight_list[index]
+            for item in flight_list:
+                if len(firsts_flights_list) == num:
+                    break
+                elif item['profits'] > more_than:
+                    firsts_flights_list.append(item)
 
-        print(
-            f"El avión con más pasajeros es: {airplane_code}. Con un total de {greater_number_passengers}.")
-
-    def get_the_first_three_flights_with_the_highest_sales(self) -> str:
-
-        venta_por_vuelo = []
-
-        for a in self.flights:
-            ventas_por_pasaje = []
-            suma_ventas_por_pasaje = 0
-            for e in a.passages:
-                ventas_por_pasaje.append(e.get_net_price())
-
-            suma_ventas_por_pasaje = sum(ventas_por_pasaje)
-
-            venta_por_vuelo.append(suma_ventas_por_pasaje)
-
-        print(venta_por_vuelo, "\n")
-
-        tres_primeros = []
-
-        for i in venta_por_vuelo:
-            if len(tres_primeros) == 3:
-                break
-            if len(tres_primeros) == 0:
-                tres_primeros.append(
-                    venta_por_vuelo[0] if venta_por_vuelo[0] > venta_por_vuelo[1] else venta_por_vuelo[1])
-            else:
-                tres_primeros = sorted(tres_primeros, reverse=False)
-                if i > tres_primeros[0]:
-                    tres_primeros.append(i)
-        print(tres_primeros)
+        return firsts_flights_list

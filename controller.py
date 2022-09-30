@@ -5,15 +5,6 @@ from data.parse_data import LOCAL_DATA
 local = LOCAL_DATA
 
 
-def question10() -> None:
-
-    local.get_greatest_numbers_passengers()
-
-
-def question_nine() -> str:
-    local.get_the_first_three_flights_with_the_highest_sales()
-
-
 def question_one() -> None:
     # What is the total number of passages solds among all the flights?
     total_passages_sale = local.get_number_of_passages_sale()
@@ -63,3 +54,39 @@ def question_six() -> None:
         total_income_premium_passages / total_passages_sale, 2)
     print(
         f"6.- Average value of premium passages: {CURRENCY} {average_premium_passage}")
+
+
+def question_seven() -> None:
+    # What was the flight with the most passengers?
+    high_number_passagers:int = local.flights[0].get_number_passages()
+    selected_flight:str = local.flights[0].get_route_code()
+    for f in local.flights:
+        current_num_passages= f.get_number_passages()
+        if current_num_passages>high_number_passagers:
+            high_number_passagers= current_num_passages
+            selected_flight = f.get_route_code()
+    print(f"7.- Thw flight with most passangers was {selected_flight}")
+
+
+def question_eight() -> None:
+    # Which was the flight with the fewest number of passengers?
+    low_number_passagers:int = local.flights[0].get_number_passages()
+    selected_flight:str = local.flights[0].get_route_code()
+    for f in local.flights:
+        current_num_passages= f.get_number_passages()
+        if current_num_passages<low_number_passagers:
+            low_number_passagers= current_num_passages
+            selected_flight = f.get_route_code()
+    print(f"8.- Thw flight with less passangers was {selected_flight}")
+
+
+def question_nine() -> None:
+    # What are the top three flights that earned the most revenue from the seat sales?
+    first_three_flights_with_highst_sales = local.get_the_firsts_flights_with_the_highest_sales(3)
+    print(
+        f"9.- The first top three flights with most revenue from seat sales was {first_three_flights_with_highst_sales}")
+
+
+def question_ten() -> None:
+    # Which plane carried the most passengers?
+    local.get_greatest_numbers_passengers()
