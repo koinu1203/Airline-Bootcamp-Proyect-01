@@ -110,44 +110,86 @@ class Timeline(object):
 
         return total_income
 
-    # This method print the flight with greatest number passengers
+    def get_smallest_numbers_passengers_by_flight(self) -> None:
+        '''
+        This method print the flight with smallest number passengers
+        '''
+        # Airplane code with smallest number passengers
+        route_code: str = ''
+        # smallest numbers of passengers among the flights
+        smallest_number_passengers: int = self.flights[0].get_number_passages()
 
-    def get_greatest_numbers_passengers(self) -> None:
+        # Iterate all the flights of the day
+        for i in self.flights:
+            # Compare and get smallest number passengers
+            if (smallest_number_passengers > len(i.passages)):
+                route_code = i.route.code
+                smallest_number_passengers = len(i.passages)
+
+        print(
+            f"El vuelo con menos pasajeros es: {route_code}. Con un total de {smallest_number_passengers}.")
+
+    def get_greatest_numbers_passengers_by_flight(self) -> None:
+        '''
+        This method print the flight with greatest number passengers
+        '''
+        # Airplane code with greatest number passengers
+        route_code: str = ''
+        # Greatest numbers of passengers among the flights
+        greater_number_passengers: int = self.flights[0].get_number_passages()
+
+        # Iterate all the flights of the day
+        for i in self.flights:
+            # Compare and get greatest number passengers
+            if (greater_number_passengers < len(i.passages)):
+                route_code = i.route.code
+                greater_number_passengers = len(i.passages)
+
+        print(
+            f"El vuelo con más pasajeros es: {route_code}. Con un total de {greater_number_passengers}.")
+
+    def get_greatest_numbers_passengers_by_airplane(self) -> None:
+        '''
+        This method print the airplane with greatest number passengers
+        '''
         # Airplane code with greatest number passengers
         airplane_code: str = ''
         # Greatest numbers of passengers among the flights
         greater_number_passengers: int = 0
 
-        # Iterate all the flights of the day
-        for i in self.flights:
-            # print(len(i.passages))
-            # Compare and get greatest number passengers
-            if (greater_number_passengers < len(i.passages)):
-                airplane_code = i.airplane.code
-                greater_number_passengers = len(i.passages)
-
-        print(
-            f"El avión con más pasajeros es: {airplane_code}. Con un total de {greater_number_passengers}.")
-    # This method print the flight with greatest number passengers
-
-    def get_greatest_numbers_passengers(self) -> None:
-        # Airplane code with greatest number passengers
-        airplane_code: str = ''
-        # Greatest numbers of passengers among the flights
-        greater_number_passengers: int = 0
+        # Dictionary of passengers by plane
+        plane_passengers = {
+            "A001": 0,
+            "A002": 0,
+            "A003": 0,
+            "A004": 0,
+        }
 
         # Iterate all the flights of the day
         for i in self.flights:
-            # print(len(i.passages))
+
             # Compare and get greatest number passengers
-            if (greater_number_passengers < len(i.passages)):
-                airplane_code = i.airplane.code
-                greater_number_passengers = len(i.passages)
+            if i.airplane.code == 'A001':
+                plane_passengers["A001"] = plane_passengers["A001"] + \
+                    len(i.passages)
+            elif i.airplane.code == 'A002':
+                plane_passengers["A002"] = plane_passengers["A002"] + \
+                    len(i.passages)
+            elif i.airplane.code == 'A003':
+                plane_passengers["A003"] = plane_passengers["A003"] + \
+                    len(i.passages)
+            else:
+                plane_passengers["A004"] = plane_passengers["A004"] + \
+                    len(i.passages)
+
+        greater_number_passengers = max(plane_passengers.values())
+        airplane_code = {
+            key for key, value in plane_passengers.items() if value == greater_number_passengers}
 
         print(
             f"El avión con más pasajeros es: {airplane_code}. Con un total de {greater_number_passengers}.")
 
-    def get_the_first_three_flights_with_the_highest_sales(self) -> str:
+    def get_the_first_three_flights_with_the_highest_sales(self) -> None:
 
         venta_por_vuelo = []
 
@@ -169,10 +211,10 @@ class Timeline(object):
             if len(tres_primeros) == 3:
                 break
             if len(tres_primeros) == 0:
-                tres_primeros.append(venta_por_vuelo[0] if venta_por_vuelo[0] > venta_por_vuelo[1] else venta_por_vuelo[1])
+                tres_primeros.append(
+                    venta_por_vuelo[0] if venta_por_vuelo[0] > venta_por_vuelo[1] else venta_por_vuelo[1])
             else:
                 tres_primeros = sorted(tres_primeros, reverse=False)
                 if i > tres_primeros[0]:
                     tres_primeros.append(i)
         print(tres_primeros)
-
