@@ -26,5 +26,6 @@ CURRENT_DATE_FORMAT: Dict[int, str] = {
     11: "Diciembre"
 }
 
+CURRENCY= '$'
 ECONOMIC_SEATS = 144
 PREMIUM_SEATS = 24
