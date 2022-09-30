@@ -7,12 +7,18 @@ local = LOCAL_DATA
 
 def question10() -> None:
 
-    local.get_greatest_numbers_passengers()
+    local.get_greatest_numbers_passengers_by_airplane()
 
 
-def question_nine() -> str:
+def question_nine() -> None:
     local.get_the_first_three_flights_with_the_highest_sales()
 
+
+def question_seven() -> None:
+    local.get_greatest_numbers_passengers_by_flight()
+
+def question_eight() -> None:
+    local.get_smallest_numbers_passengers_by_flight()
 
 def question_one() -> None:
     # What is the total number of passages solds among all the flights?
