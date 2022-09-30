@@ -83,7 +83,7 @@ class Flight(object):
         total_income_economic_passages: float = 0.0
         for passage in self.passages:
             if not passage.isPremium:
-                total_income_economic_passages += passage.gross_price
+                total_income_economic_passages += passage.get_net_price()
 
         return total_income_economic_passages
 
@@ -94,7 +94,7 @@ class Flight(object):
         total_income_premium_passages: float = 0.0
         for passage in self.passages:
             if passage.isPremium:
-                total_income_premium_passages += passage.gross_price
+                total_income_premium_passages += passage.get_net_price()
 
         return total_income_premium_passages
 
