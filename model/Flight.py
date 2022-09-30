@@ -26,12 +26,15 @@ class Flight(object):
         check and raise exceptions in the current class 
         """
 
-        if(len(self.passages)> self.airplane.capacity):
-            raise Exception (f"The airplane {self.airplane.code} only has the capacity to {self.airplane.capacity}. Ticket overbooking")
-        if(len(self.get_economic_passages_list())>self.airplane.economy_seats):
-            raise Exception (f"The airplane {self.airplane.code} only has {self.airplane.economy_seats} economic seats. Ticket overbooking")
-        if(len(self.get_premium_passages_list())>self.airplane.premiun_seats):
-            raise Exception (f"The airplane {self.airplane.code} only has {self.airplane.economy_seats} premium seats. Ticket overbooking")
+        if (len(self.passages) > self.airplane.capacity):
+            raise Exception(
+                f"The airplane {self.airplane.code} only has the capacity to {self.airplane.capacity}. Ticket overbooking")
+        if (len(self.get_economic_passages_list()) > self.airplane.economy_seats):
+            raise Exception(
+                f"The airplane {self.airplane.code} only has {self.airplane.economy_seats} economic seats. Ticket overbooking")
+        if (len(self.get_premium_passages_list()) > self.airplane.premiun_seats):
+            raise Exception(
+                f"The airplane {self.airplane.code} only has {self.airplane.economy_seats} premium seats. Ticket overbooking")
 
     def get_number_passages(self) -> int:
         """
@@ -63,12 +66,13 @@ class Flight(object):
                 premium_passages.append(passage)
 
         return premium_passages
-    
+
     def get_total_income_by_all_passages(self) -> float:
         """
         returns the total income by all passages sales in the flight
         """
-        total_income_all_passages: float = sum(p.gross_price for p in self.passages)
+        total_income_all_passages: float = sum(
+            p.gross_price for p in self.passages)
 
         return total_income_all_passages
 
@@ -102,7 +106,7 @@ class Flight(object):
         total_IGV_Charge = sum(v.tax for v in self.passages)
 
         return total_IGV_Charge
-    
+
     def get_route_code(self) -> str:
         """
         return the route code in flight
