@@ -12,7 +12,7 @@ def main():
     controller.question_seven()
     controller.question_eight()
     controller.question_nine()
-    controller.question10()
+    controller.question_ten()
 
 
 if __name__ == "__main__":
