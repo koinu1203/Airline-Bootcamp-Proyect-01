@@ -90,4 +90,4 @@ def question_nine() -> None:
 
 def question_ten() -> None:
     # Which plane carried the most passengers?
-    local.get_greatest_numbers_passengers()
+    local.get_airplane_with_highest_numbers_passengers_on_all_flights()
