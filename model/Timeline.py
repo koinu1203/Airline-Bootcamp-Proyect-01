@@ -147,7 +147,7 @@ class Timeline(object):
         for a in airplanes_codes:
             sum_num_passagers = sum(v.get_number_passages()
                                     for v in self.get_flights_by_airplane_code(a))
-            if highest_num_passager > sum_num_passagers:
+            if highest_num_passager < sum_num_passagers:
                 highest_num_passager = sum_num_passagers
                 airplane_selected = a
 
